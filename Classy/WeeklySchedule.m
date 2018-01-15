@@ -146,13 +146,14 @@ static NSMutableSet* weeklySchedule;
     
     TimeSlot* MorningMeetingMonday = [[TimeSlot alloc] initWithWeekday:@"Monday" withStartMinute:[NSNumber numberWithInt:10*60+5] withDuration:[NSNumber numberWithInt:15]];
     
-    TimeSlot* MorningMeetingThursday = [[TimeSlot alloc] initWithWeekday:@"Thursday" withStartMinute:[NSNumber numberWithInt:10*60+0] withDuration:[NSNumber numberWithInt:20]];
     
     // BREAK TIMESLOTS -----------------------------
     
-    TimeSlot* BreakTuesday = [[TimeSlot alloc] initWithWeekday:@"Tuesday" withStartMinute:[NSNumber numberWithInt:10*60] withDuration:[NSNumber numberWithInt:20]];
+    TimeSlot* BreakTuesday = [[TimeSlot alloc] initWithWeekday:@"Tuesday" withStartMinute:[NSNumber numberWithInt:10*60] withDuration:[NSNumber numberWithInt:15]];
     
-    TimeSlot* BreakWednesday = [[TimeSlot alloc] initWithWeekday:@"Wednesday"  withStartMinute:[NSNumber numberWithInt:10*60+0] withDuration:[NSNumber numberWithInt:10]];
+    TimeSlot* BreakWednesday = [[TimeSlot alloc] initWithWeekday:@"Wednesday"  withStartMinute:[NSNumber numberWithInt:10*60-5] withDuration:[NSNumber numberWithInt:10]];
+    
+     TimeSlot* BreakThursday = [[TimeSlot alloc] initWithWeekday:@"Thursday" withStartMinute:[NSNumber numberWithInt:10*60-5] withDuration:[NSNumber numberWithInt:25]];
     
     TimeSlot* BreakFriday = [[TimeSlot alloc] initWithWeekday:@"Friday" withStartMinute:[NSNumber numberWithInt:9*60+50] withDuration:[NSNumber numberWithInt:15]];
     
@@ -174,7 +175,7 @@ static NSMutableSet* weeklySchedule;
     
     // PRACTICUM TIMESLOTS -----------------------------
     
-    TimeSlot* PracticumThursday = [[TimeSlot alloc] initWithWeekday:@"Thursday" withStartMinute:[NSNumber numberWithInt:14*60+20] withDuration:[NSNumber numberWithInt:60]];
+    TimeSlot* HBlockThursday = [[TimeSlot alloc] initWithWeekday:@"Thursday" withStartMinute:[NSNumber numberWithInt:14*60+20] withDuration:[NSNumber numberWithInt:60]];
     
     // ASSEMBLY TIMESLOTS -----------------------------
     
@@ -189,11 +190,11 @@ static NSMutableSet* weeklySchedule;
     NSMutableSet* EBlockTimeSlots = [[NSMutableSet alloc] initWithObjects:EBlockMonday, EBlockTuesday, EBlockThursday, EBlockFriday, nil];
     NSMutableSet* FBlockTimeSlots = [[NSMutableSet alloc] initWithObjects:FBlockMonday, FBlockTuesday, FBlockThursday, FBlockFriday, nil];
     NSMutableSet* GBlockTimeSlots = [[NSMutableSet alloc] initWithObjects:GBlockMonday, GBlockTuesday, GBlockThursday, GBlockFriday, nil];
-    NSMutableSet* MorningMeetingTimeSlots = [[NSMutableSet alloc] initWithObjects:MorningMeetingMonday, MorningMeetingThursday, nil];
-    NSMutableSet* BreakTimeSlots = [[NSMutableSet alloc] initWithObjects:BreakTuesday, BreakWednesday, BreakFriday, nil];
+    NSMutableSet* MorningMeetingTimeSlots = [[NSMutableSet alloc] initWithObjects:MorningMeetingMonday, nil];
+    NSMutableSet* BreakTimeSlots = [[NSMutableSet alloc] initWithObjects:BreakTuesday, BreakWednesday, BreakThursday, BreakFriday, nil];
     NSMutableSet* LunchTimeSlots = [[NSMutableSet alloc] initWithObjects:LunchMonday, LunchTuesday, LunchWednesday, LunchThursday, LunchFriday, nil];
     NSMutableSet* AdvisingTimeSlots = [[NSMutableSet alloc] initWithObjects:AdvisingTuesday, nil];
-    NSMutableSet* PracticumTimeSlots = [[NSMutableSet alloc] initWithObjects:PracticumThursday, nil];
+    NSMutableSet* HBlockTimeSlots = [[NSMutableSet alloc] initWithObjects:HBlockThursday, nil];
     NSMutableSet* AssemblyTimeSlots = [[NSMutableSet alloc] initWithObjects:AssemblyFriday, nil];
     
     // CREATE CUSTOM ACTIVITY NAMES
@@ -212,12 +213,12 @@ static NSMutableSet* weeklySchedule;
     Activity* Break = [[Activity alloc] initWithName:@"Break" withDisplayName:@"Break" withColor:@"Gray" withTimeSlots:BreakTimeSlots];
     Activity* Lunch = [[Activity alloc] initWithName:@"Lunch" withDisplayName:@"Lunch" withColor:@"Gray" withTimeSlots:LunchTimeSlots];
     Activity* Advising = [[Activity alloc] initWithName:@"Advising" withDisplayName:@"Advising" withColor:@"Gray" withTimeSlots:AdvisingTimeSlots];
-    Activity* Practicum = [[Activity alloc] initWithName:@"Practicum" withDisplayName:@"Practicum" withColor:@"Gray" withTimeSlots:PracticumTimeSlots];
+    Activity* HBlock = [[Activity alloc] initWithName:@"H Block" withDisplayName:@"H Block" withColor:@"Gray" withTimeSlots:HBlockTimeSlots];
     Activity* Assembly = [[Activity alloc] initWithName:@"Assembly" withDisplayName:@"Assembly" withColor:@"Gray" withTimeSlots:AssemblyTimeSlots];
     
     // CREATE MUTABLE SET "SCHEDULE"
     
-    weeklySchedule = [[NSMutableSet alloc] initWithObjects:ABlock, BBlock, CBlock, DBlock, EBlock, FBlock, GBlock, MorningMeeting, Break, Lunch, Advising, Practicum, Assembly, nil];
+    weeklySchedule = [[NSMutableSet alloc] initWithObjects:ABlock, BBlock, CBlock, DBlock, EBlock, FBlock, GBlock, MorningMeeting, Break, Lunch, Advising, HBlock, Assembly, nil];
 }
 
 @end
